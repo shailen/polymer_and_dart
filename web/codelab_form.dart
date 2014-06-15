@@ -5,20 +5,22 @@ import 'dart:html' show CustomEvent, Event, Node;
 @CustomTag('codelab-form')
 class CodelabFormElement extends PolymerElement {
   // TODO: change codelab constructor to make title optional.
-  @observable Codelab codelab = new Codelab('');
+  @published Codelab codelab;
 
   CodelabFormElement.created() : super.created();
 
-  dispatchCreate(Event event, Object detail, Node sender) {
+  create(Event event, Object detail, Node sender) {
     event.preventDefault();
     // TODO: Add validation here. Bail on failure.
 
+    // TODO: better name.
     dispatchEvent(new CustomEvent('codelabcreated',
         detail: {'codelab': codelab}));
-    codelab = new Codelab('');
   }
 
-  dispatchCancel(Event event, Object detail, Node sender) {
-    codelab = new Codelab('');
+  cancel(Event event, Object detail, Node sender) {
+    print("inside dispatch cancel");
+    event.preventDefault();
+    dispatchEvent(new CustomEvent('formnotneeded'));
   }
 }

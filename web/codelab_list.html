@@ -1,12 +1,11 @@
-<link rel="import" href="codelab_form_element.html">
+<link rel="import" href="codelab_form.html">
 <link rel="import" href="codelab_element.html">
 
 <polymer-element name="codelab-list" attributes="codelabs">
   <template>
-    <div on-codelabcreated="{{addCodelab}}">
-      <codelab-form></codelab-form>
+    <div on-codelabcreated="{{addCodelab}}" on-formnotneeded="{{resetNewCodelabForm}}">
+      <codelab-form codelab="{{newCodelab}}"></codelab-form>
     </div>
-
     <template repeat="{{codelab in codelabs}}">
       <codelab-element codelab="{{codelab}}"></codelab-element>
     </template>

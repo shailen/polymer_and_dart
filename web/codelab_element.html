@@ -1,6 +1,17 @@
+<link rel="import" href="codelab_form.html">
+
 <polymer-element name="codelab-element" attributes="codelab">
   <template>
-    <div>{{codelab.title}}</div>
+    <div on-formnotneeded="{{cancelEditing}}"
+         on-codelabcreated="{{updateCodelab}}">
+      <template if="{{!editing}}">
+        <div>{{codelab.title}}</div>
+        <div on-click="{{startEditing}}">Edit</div>
+      </template>
+      <template if="{{editing}}">
+        <codelab-form codelab="{{codelab}}"></codelab-form>
+      </template>
+    </div>
   </template>
   <script type="application/dart" src="codelab_element.dart"></script>
 </polymer-element>

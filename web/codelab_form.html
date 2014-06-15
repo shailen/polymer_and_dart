@@ -1,0 +1,11 @@
+<polymer-element name="codelab-form" attributes="codelab">
+  <template>
+    <form on-submit="{{create}}">
+      <textarea placeholder="Add title here" value="{{codelab.title}}">
+      </textarea>
+      <button type="submit">Submit</button>
+      <button type="button" on-click="{{cancel}}">Cancel</button>
+    </form>
+  </template>
+  <script type="application/dart" src="codelab_form.dart"></script>
+</polymer-element>

@@ -4,6 +4,7 @@ import 'dart:html';
 
 @CustomTag('codelab-list')
 class CodelabList extends PolymerElement {
+  @observable Codelab newCodelab = new Codelab('');
   @published List<Codelab> codelabs = toObservable([]);
 
   CodelabList.created() : super.created() {}
@@ -15,7 +16,11 @@ class CodelabList extends PolymerElement {
   }
 
   addCodelab(Event e, var detail, Node sender) {
-    window.console.log(detail);
     codelabs.add(detail['codelab']);
+    newCodelab = new Codelab('');
+  }
+
+  resetNewCodelabForm(Event e, var detail, Node sender) {
+    newCodelab = new Codelab('');
   }
 }
