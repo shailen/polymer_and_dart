@@ -23,4 +23,9 @@ class CodelabList extends PolymerElement {
   resetNewCodelabForm(Event e, var detail, Node sender) {
     newCodelab = new Codelab('');
   }
+
+  deleteCodelab(Event e, var detail, Node sender) {
+    var codelab = detail['codelab'];
+    codelabs.remove(codelab);
+  }
 }

@@ -21,12 +21,18 @@ class CodelabElement extends PolymerElement {
     editing = false;
   }
 
-  startEditing(Event event, var detail, Node sender) {
-    event.preventDefault();
+  startEditing(Event e, var detail, Node sender) {
+    e.preventDefault();
     // TODO: fix constructor.
     _cachedCodelab = new Codelab('');
     // Create Codelab.copy()
     _cachedCodelab.title = codelab.title;
     editing = true;
+  }
+
+  delete(Event e, var detail, Node sender) {
+    e.preventDefault();
+    dispatchEvent(new CustomEvent('deletecodelab',
+        detail: {'codelab': codelab}));
   }
 }
