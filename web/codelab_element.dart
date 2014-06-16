@@ -5,8 +5,8 @@ import 'dart:html';
 @CustomTag('codelab-element')
 class CodelabElement extends PolymerElement {
   @published Codelab codelab;
-  Codelab _cachedCodelab;
   @observable bool editing = false;
+  Codelab _cachedCodelab;
 
   CodelabElement.created(): super.created() {}
 

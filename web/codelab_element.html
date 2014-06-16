@@ -2,10 +2,12 @@
 
 <polymer-element name="codelab-element" attributes="codelab">
   <template>
-    <div on-formnotneeded="{{cancelEditing}}"
-         on-codelabcreated="{{updateCodelab}}">
+    <div on-formNotNeeded="{{cancelEditing}}"
+         on-codelabCreated="{{updateCodelab}}">
       <template if="{{!editing}}">
         <div>{{codelab.title}}</div>
+        <div>{{codelab.description}}</div>
+        <div>{{codelab.theme}}</div>
         <span on-click="{{startEditing}}">Edit</span>
         <span on-click="{{delete}}">Delete</span>
       </template>

@@ -6,13 +6,12 @@ import 'dart:html';
 class CodelabList extends PolymerElement {
   @observable Codelab newCodelab = new Codelab('');
   @published List<Codelab> codelabs = toObservable([]);
-
   CodelabList.created() : super.created() {}
 
   attached() {
     super.attached();
     // Seed data goes here.
-    codelabs.addAll([new Codelab('codelab one'), new Codelab('codelab two')]);
+    // codelabs.addAll([new Codelab('codelab one'), new Codelab('codelab two')]);
   }
 
   addCodelab(Event e, var detail, Node sender) {

@@ -1,10 +1,34 @@
 <polymer-element name="codelab-form" attributes="codelab">
   <template>
     <form on-submit="{{create}}">
-      <textarea placeholder="Add title here" value="{{codelab.title}}">
-      </textarea>
-      <button type="submit">Submit</button>
-      <button type="button" on-click="{{cancel}}">Cancel</button>
+      <div>
+        <textarea placeholder="Add title" value="{{codelab.title}}">
+        </textarea>
+      </div>
+      <div>
+        <textarea placeholder="Add description" value="{{codelab.description}}">
+        </textarea>
+      </div>
+      <div>
+        <label>Theme: </label>
+        <select selectedIndex="{{selectedIndex}}" value="{{codelab.theme}}">
+          <option template repeat="{{theme in allThemes}}">
+            {{theme}}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label>Topics: </label>
+        <template repeat="{{topic in allTopics}}">
+          <input type="checkbox" id="{{topic}}" checked?="{{checkedThemesMap[topic]}}">
+            <label for="{{topic}}">{{topic}}</label>
+        </template>
+      </div>
+      <div>{{checkedThemesMap}}</div>
+      <div>
+        <button type="submit">Submit</button>
+        <button type="button" on-click="{{cancel}}">Cancel</button>
+      </div>
     </form>
   </template>
   <script type="application/dart" src="codelab_form.dart"></script>
