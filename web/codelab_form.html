@@ -11,20 +11,12 @@
       </div>
       <div>
         <label>Theme: </label>
-        <select selectedIndex="{{selectedIndex}}" value="{{codelab.theme}}">
+        <select value="{{codelab.theme}}">
           <option template repeat="{{theme in allThemes}}">
             {{theme}}
           </option>
         </select>
       </div>
-      <div>
-        <label>Topics: </label>
-        <template repeat="{{topic in allTopics}}">
-          <input type="checkbox" id="{{topic}}" checked?="{{checkedThemesMap[topic]}}">
-            <label for="{{topic}}">{{topic}}</label>
-        </template>
-      </div>
-      <div>{{checkedThemesMap}}</div>
       <div>
         <button type="submit">Submit</button>
         <button type="button" on-click="{{cancel}}">Cancel</button>
