@@ -83,6 +83,9 @@ class CodelabFormElement extends PolymerElement {
    */
   cancelForm(Event event, Object detail, Node sender) {
     event.preventDefault();
+    formErrorMessage = '';
+    titleErrorMessage = '';
+    descriptionErrorMessage = '';
     dispatchEvent(new CustomEvent('formnotneeded'));
   }
 }
