@@ -1,0 +1,9 @@
+# Build and admin with Polymer and Dart
+
+This app provides basic CRUD functionality for building an admin.
+
+The app is intended to be used as a codelab. The final version of the app can
+be found in web/end/.
+
+
+
