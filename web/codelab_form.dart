@@ -24,7 +24,6 @@ class CodelabFormElement extends PolymerElement {
   /*
    * Variables used in displaying error messages.
    */
-  @observable String formErrorMessage = '';
   @observable String titleErrorMessage = '';
   @observable String descriptionErrorMessage = '';
 
@@ -68,11 +67,8 @@ class CodelabFormElement extends PolymerElement {
   validateCodelab(Event event, Object detail, Node sender) {
     event.preventDefault();
     if (validateTitle() && validateDescription()) {
-      formErrorMessage = '';
       dispatchEvent(new CustomEvent('codelabvalidated',
           detail: {'codelab': codelab}));
-    } else {
-      formErrorMessage = 'Error: codelab not saved.';
     }
   }
 
@@ -83,7 +79,6 @@ class CodelabFormElement extends PolymerElement {
    */
   cancelForm(Event event, Object detail, Node sender) {
     event.preventDefault();
-    formErrorMessage = '';
     titleErrorMessage = '';
     descriptionErrorMessage = '';
     dispatchEvent(new CustomEvent('formnotneeded'));

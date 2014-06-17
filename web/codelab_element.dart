@@ -13,7 +13,7 @@ class CodelabElement extends PolymerElement {
   /*
    * Updates codelab. If the codelab's level has changed, dispatches a
    * custom event. This allows the element's parent to register a listener to
-   * update the list of filtered codelabs.
+   * update the filtered codelabs list.
    */
   updateCodelab(Event e, var detail, Node sender) {
     e.preventDefault();

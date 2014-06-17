@@ -34,10 +34,14 @@ class CodelabList extends PolymerElement {
    */
   @observable List<Codelab> filteredCodelabs = toObservable([]);
 
+  /*
+   * Sets the new codelab form to default to the intermediate level.
+   */
+  String get defaultLevel => Codelab.LEVELS[1];
+
   CodelabList.created() : super.created() {
-    // Set a default level. Assume most codelabs are 'intermediate'.
-    newCodelab.level = Codelab.LEVELS[1];
     filteredCodelabs = codelabs;
+    newCodelab.level = defaultLevel;
   }
 
   /*
@@ -75,6 +79,7 @@ class CodelabList extends PolymerElement {
    */
   resetForm() {
     newCodelab = new Codelab();
+    newCodelab.level = defaultLevel;
   }
 
   /*
