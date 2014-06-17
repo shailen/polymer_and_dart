@@ -1,5 +1,5 @@
 import 'package:polymer/polymer.dart';
-import 'models.dart' show Codelab;
+import 'model.dart' show Codelab;
 import 'dart:html';
 
 @CustomTag('codelab-list')
