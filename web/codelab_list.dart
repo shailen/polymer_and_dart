@@ -6,7 +6,10 @@ import 'dart:html';
 class CodelabList extends PolymerElement {
   @observable Codelab newCodelab = new Codelab('');
   @published List<Codelab> codelabs = toObservable([]);
-  CodelabList.created() : super.created() {}
+  CodelabList.created() : super.created() {
+    // Set a default level.
+    newCodelab.level = Codelab.LEVELS[1];
+  }
 
   attached() {
     super.attached();

@@ -1,19 +1,39 @@
 <polymer-element name="codelab-form" attributes="codelab">
   <template>
     <form on-submit="{{create}}">
-      <div>
-        <textarea placeholder="Add title" value="{{codelab.title}}">
-        </textarea>
+      <div class="error" hidden?="{{formErrorMessage.isEmpty}}">
+        {{formErrorMessage}}
+      </div>
+      <div hidden?="{{formErrorMessage.isNotEmpty}}">
+        Create a codelab proposal.
       </div>
       <div>
-        <textarea placeholder="Add description" value="{{codelab.description}}">
+        <textarea placeholder="Add title" value="{{codelab.title}}"
+            on-keyup="{{validateTitle}}">
         </textarea>
+        <div>
+          <span class="chars-left">{{maxTitleLength - codelab.title.length}}</span>
+          <span class="error" hidden?="{{titleErrorMessage.isEmpty}}">
+            {{titleErrorMessage}}
+          </span>
+        </div>
       </div>
       <div>
-        <label>Theme: </label>
-        <select value="{{codelab.theme}}">
-          <option template repeat="{{theme in allThemes}}">
-            {{theme}}
+        <textarea placeholder="Add description" value="{{codelab.description}}"
+            on-keyup="{{validateDescription}}">
+        </textarea>
+        <div class="chars-left">
+          {{maxDescriptionLength - codelab.description.length}}
+        </div>
+        <div class="error" hidden?="{{descriptionErrorMessage.isEmpty}}">
+          {{descriptionErrorMessage}}
+        </div>
+      </div>
+      <div>
+        <label>Level: </label>
+        <select value="{{codelab.level}}">
+          <option template repeat="{{level in allLevels}}">
+            {{level}}
           </option>
         </select>
       </div>
