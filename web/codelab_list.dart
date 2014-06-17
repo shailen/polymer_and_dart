@@ -4,22 +4,40 @@ import 'dart:html';
 
 @CustomTag('codelab-list')
 class CodelabList extends PolymerElement {
+
   @observable Codelab newCodelab = new Codelab('');
-  @published List<Codelab> codelabs = toObservable([]);
+  @observable List<Codelab> codelabs = toObservable([]);
+  @observable get filters {
+    List<String> f = ['all'];
+    f.addAll(Codelab.LEVELS);
+    return f;
+  }
+  @observable String filterValue = 'all';
+  @observable List<Codelab> filteredCodelabs = toObservable([]);
+
   CodelabList.created() : super.created() {
     // Set a default level.
     newCodelab.level = Codelab.LEVELS[1];
+    filteredCodelabs = codelabs;
   }
 
-  attached() {
-    super.attached();
-    // Seed data goes here.
-    // codelabs.addAll([new Codelab('codelab one'), new Codelab('codelab two')]);
+  filter() {
+    if (filterValue == 'all') {
+      filteredCodelabs = codelabs;  // By value????????
+      return;
+    }
+    filteredCodelabs = codelabs.where((codelab) {
+      return codelab.level == filterValue;
+    }).toList();
   }
 
   addCodelab(Event e, var detail, Node sender) {
     codelabs.add(detail['codelab']);
     newCodelab = new Codelab('');
+  }
+
+  codelabsChanged() {
+    filter();
   }
 
   resetNewCodelabForm(Event e, var detail, Node sender) {
