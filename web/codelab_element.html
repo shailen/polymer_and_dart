@@ -9,7 +9,7 @@
         <div>{{codelab.description}}</div>
         <div>{{codelab.level}}</div>
         <span on-click="{{startEditing}}">Edit</span>
-        <span on-click="{{delete}}">Delete</span>
+        <span on-click="{{deleteCodelab}}">Delete</span>
       </template>
       <template if="{{editing}}">
         <codelab-form codelab="{{codelab}}"></codelab-form>

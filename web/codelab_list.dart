@@ -62,6 +62,7 @@ class CodelabList extends PolymerElement {
    * triggers codelabsChanged().
    */
   addCodelab(Event e, var detail, Node sender) {
+    e.preventDefault();
     codelabs.add(detail['codelab']);
     resetForm();
   }

@@ -10,6 +10,11 @@ class CodelabElement extends PolymerElement {
 
   CodelabElement.created(): super.created() {}
 
+  /*
+   * Updates codelab. If the codelab's level has changed, dispatches a
+   * custom event. This allows the element's parent to register a listener to
+   * update the list of filtered codelabs.
+   */
   updateCodelab(Event e, var detail, Node sender) {
     e.preventDefault();
     if (_cachedCodelab.level != codelab.level) {
@@ -18,24 +23,40 @@ class CodelabElement extends PolymerElement {
     editing = false;
   }
 
+  /*
+   * Cancels editing, restoring the original codelab values.
+   */
   cancelEditing(Event e, var detail, Node sender) {
     e.preventDefault();
-    codelab.title = _cachedCodelab.title;
+    copyCodelab(codelab, _cachedCodelab);
     editing = false;
   }
 
+  /*
+   * Starts editing, caching the codelab values.
+   */
   startEditing(Event e, var detail, Node sender) {
     e.preventDefault();
-    // TODO: fix constructor.
-    _cachedCodelab = new Codelab('');
-    // Create Codelab.copy()
-    _cachedCodelab.title = codelab.title;
+    _cachedCodelab = new Codelab();
+    copyCodelab(_cachedCodelab, codelab);
     editing = true;
   }
 
-  delete(Event e, var detail, Node sender) {
+  /*
+   * Dispatches a custom event requesting the codelab be deleted.
+   */
+  deleteCodelab(Event e, var detail, Node sender) {
     e.preventDefault();
     dispatchEvent(new CustomEvent('deletecodelab',
         detail: {'codelab': codelab}));
+  }
+
+  /*
+   * Copies values from source codelab to destination codelab.
+   */
+  copyCodelab(source, destination) {
+    source.title = destination.title;
+    source.description = destination.description;
+    source.level = destination.level;
   }
 }
