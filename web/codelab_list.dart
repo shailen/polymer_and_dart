@@ -1,6 +1,6 @@
 import 'package:polymer/polymer.dart';
 import 'model.dart' show Codelab;
-import 'dart:html';
+import 'dart:html' show Event, Node;
 
 /*
  * Class to represent a collection of Codelab objects.
@@ -22,14 +22,10 @@ class CodelabList extends PolymerElement {
    * List of filter values. Includes the levels defined in the model, as well
    * as a filter to return all codelabs.
    */
-  @observable get filters {
-    List<String> _filters = [ALL];
-    _filters.addAll(Codelab.LEVELS);
-    return _filters;
-  }
+  final List<String> filters = ['all']..addAll(Codelab.LEVELS);
 
   /*
-   * String that stores the value used to filter codelabs
+   * String that stores the value used to filter codelabs.
    */
   @observable String filterValue = ALL;
 
