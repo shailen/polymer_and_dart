@@ -22,11 +22,13 @@
         <textarea placeholder="Add description" value="{{codelab.description}}"
             on-keyup="{{validateDescription}}">
         </textarea>
-        <div class="chars-left">
-          {{maxDescriptionLength - codelab.description.length}}
-        </div>
-        <div class="error" hidden?="{{descriptionErrorMessage.isEmpty}}">
-          {{descriptionErrorMessage}}
+        <div>
+          <span class="chars-left">
+            {{maxDescriptionLength - codelab.description.length}}
+          </span>
+          <span class="error" hidden?="{{descriptionErrorMessage.isEmpty}}">
+            {{descriptionErrorMessage}}
+          </span>
         </div>
       </div>
       <div>
