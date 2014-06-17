@@ -3,7 +3,7 @@
 <polymer-element name="codelab-element" attributes="codelab">
   <template>
     <div on-formNotNeeded="{{cancelEditing}}"
-         on-codelabCreated="{{updateCodelab}}">
+         on-codelabvalidated="{{updateCodelab}}">
       <template if="{{!editing}}">
         <div>{{codelab.title}}</div>
         <div>{{codelab.description}}</div>

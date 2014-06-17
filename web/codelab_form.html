@@ -1,6 +1,6 @@
 <polymer-element name="codelab-form" attributes="codelab">
   <template>
-    <form on-submit="{{create}}">
+    <form on-submit="{{validateCodelab}}">
       <div class="error" hidden?="{{formErrorMessage.isEmpty}}">
         {{formErrorMessage}}
       </div>
@@ -39,7 +39,7 @@
       </div>
       <div>
         <button type="submit">Submit</button>
-        <button type="button" on-click="{{cancel}}">Cancel</button>
+        <button type="button" on-click="{{cancelForm}}">Cancel</button>
       </div>
     </form>
   </template>

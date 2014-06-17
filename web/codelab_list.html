@@ -11,7 +11,8 @@
           </option>
         </select>
       </div>
-    <div on-codelabcreated="{{addCodelab}}" on-formnotneeded="{{resetNewCodelabForm}}">
+    <div on-codelabvalidated="{{addCodelab}}"
+         on-formnotneeded="{{resetNewCodelabForm}}">
       <codelab-form codelab="{{newCodelab}}"></codelab-form>
     </div>
     <div on-deletecodelab="{{deleteCodelab}}"
