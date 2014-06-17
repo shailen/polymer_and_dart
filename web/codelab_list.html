@@ -4,15 +4,15 @@
 <polymer-element name="codelab-list">
   <template>
     <div>
-        <label>Filter: </label>
-        <select value="{{filterValue}}" on-change="{{filter}}">
-          <option template repeat="{{filter in filters}}">
-            {{filter}}
-          </option>
-        </select>
-      </div>
+      <label>Filter: </label>
+      <select value="{{filterValue}}" on-change="{{filter}}">
+        <option template repeat="{{filter in filters}}">
+          {{filter}}
+        </option>
+      </select>
+    </div>
     <div on-codelabvalidated="{{addCodelab}}"
-         on-formnotneeded="{{resetNewCodelabForm}}">
+         on-formnotneeded="{{resetForm}}">
       <codelab-form codelab="{{newCodelab}}"></codelab-form>
     </div>
     <div on-deletecodelab="{{deleteCodelab}}"

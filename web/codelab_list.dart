@@ -63,7 +63,7 @@ class CodelabList extends PolymerElement {
    */
   addCodelab(Event e, var detail, Node sender) {
     codelabs.add(detail['codelab']);
-    resetNewCodelabForm();
+    resetForm();
   }
 
   /*
@@ -76,7 +76,7 @@ class CodelabList extends PolymerElement {
   /*
    * Replaces the existing new Codelab, causing the new codelab form to reset.
    */
-  resetNewCodelabForm() {
+  resetForm() {
     newCodelab = new Codelab();
   }
 

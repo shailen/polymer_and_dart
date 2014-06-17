@@ -62,13 +62,13 @@ class CodelabFormElement extends PolymerElement {
 
   /*
    * Dispatches a custom event if a codelab passes validation. Otherwise, sets
-   * the form error message.
+   * the form error message. It is up to the form's parent element to listen
+   * for the dispatch and handle the validated codelab object.
    */
   validateCodelab(Event event, Object detail, Node sender) {
     event.preventDefault();
     if (validateTitle() && validateDescription()) {
       formErrorMessage = '';
-      // TODO: better name.
       dispatchEvent(new CustomEvent('codelabvalidated',
           detail: {'codelab': codelab}));
     } else {
@@ -77,7 +77,9 @@ class CodelabFormElement extends PolymerElement {
   }
 
   /*
-   * Dispatches a custom event when a form is no longer needed.
+   * Dispatches a custom event when a form is no longer needed. It is up to the
+   * form's parent elemnt to listen for the dispatch and handle a form that
+   * isn't being used.
    */
   cancelForm(Event event, Object detail, Node sender) {
     event.preventDefault();
