@@ -7,6 +7,7 @@ transformers:
     entry_points: [web/begin/index.html,
                    web/step1/index.html,
                    web/step2/index.html,
+                   web/step3/index.html,
                    web/end/index.html]
 dev_dependencies:
   unittest: ">=0.10.0 <0.11.0"
