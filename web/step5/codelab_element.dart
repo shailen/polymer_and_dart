@@ -12,9 +12,6 @@ class CodelabElement extends PolymerElement {
 
   updateCodelab(Event e, var detail, Node sender) {
      e.preventDefault();
-     if (_cachedCodelab.level != codelab.level) {
-       dispatchEvent(new CustomEvent('levelchanged'));
-     }
      editing = false;
    }
 

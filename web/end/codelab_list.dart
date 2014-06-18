@@ -22,7 +22,7 @@ class CodelabList extends PolymerElement {
    * List of filter values. Includes the levels defined in the model, as well
    * as a filter to return all codelabs.
    */
-  final List<String> filters = ['all']..addAll(Codelab.LEVELS);
+  final List<String> filters = [ALL]..addAll(Codelab.LEVELS);
 
   /*
    * String that stores the value used to filter codelabs.
