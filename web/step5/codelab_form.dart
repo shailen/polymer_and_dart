@@ -5,7 +5,6 @@ import 'dart:html' show CustomEvent, Event, Node;
 
 @CustomTag('codelab-form')
 class CodelabFormElement extends PolymerElement {
-
   @published Codelab codelab;
 
   List<String> get allLevels => Codelab.LEVELS;
@@ -16,9 +15,7 @@ class CodelabFormElement extends PolymerElement {
   @observable String titleErrorMessage = '';
   @observable String descriptionErrorMessage = '';
 
-  CodelabFormElement.created() : super.created() {
-
-  }
+  CodelabFormElement.created() : super.created() {}
 
   bool validateTitle() {
     if (codelab.title.length < minTitleLength ||

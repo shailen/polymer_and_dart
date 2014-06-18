@@ -22,28 +22,23 @@
         padding: 0px;
         font-size: 1.8em;
       }
-
       .small {
         font-size: .8em;
       }
-
     </style>
-      <div on-formNotNeeded="{{cancelEditing}}"
-         on-codelabvalidated="{{updateCodelab}}">
+    <div on-formNotNeeded="{{cancelEditing}}"
+        on-codelabvalidated="{{updateCodelab}}">
       <template if="{{!editing}}">
         <div class="codelab">
           <div class="field">
             <h2>{{codelab.title}}</h2>
           </div>
-
           <div class="field">
             <p>{{codelab.description}}</p>
           </div>
-
           <div class="field">
             <p><span>Level: </span>{{codelab.level}}</p>
           </div>
-
           <div class="field">
             <span on-click="{{startEditing}}" class="small">Edit</span>
           </div>

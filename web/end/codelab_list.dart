@@ -19,6 +19,11 @@ class CodelabList extends PolymerElement {
   @observable List<Codelab> codelabs = toObservable([]);
 
   /*
+   * Sets the new codelab form to default to the intermediate level.
+   */
+  String get defaultLevel => Codelab.LEVELS[1];
+
+  /*
    * List of filter values. Includes the levels defined in the model, as well
    * as a filter to return all codelabs.
    */
@@ -35,13 +40,38 @@ class CodelabList extends PolymerElement {
   @observable List<Codelab> filteredCodelabs = toObservable([]);
 
   /*
-   * Sets the new codelab form to default to the intermediate level.
+   * Named constructor. Sets initial value of filtered codelabs and sets
+   * the new codelab's level to the default.
    */
-  String get defaultLevel => Codelab.LEVELS[1];
-
   CodelabList.created() : super.created() {
     filteredCodelabs = codelabs;
     newCodelab.level = defaultLevel;
+  }
+
+  /*
+   * Replaces the existing new Codelab, causing the new codelab form to reset.
+   */
+  resetForm() {
+    newCodelab = new Codelab();
+    newCodelab.level = defaultLevel;
+  }
+
+  /*
+   * Adds a codelab to the codelabs list and resets the new codelab form. This
+   * triggers codelabsChanged().
+   */
+  addCodelab(Event e, var detail, Node sender) {
+    e.preventDefault();
+    codelabs.add(detail['codelab']);
+    resetForm();
+  }
+
+  /*
+   * Removes a codelab from the codelabs list. This triggers codelabsChanged().
+   */
+  deleteCodelab(Event e, var detail, Node sender) {
+    var codelab = detail['codelab'];
+    codelabs.remove(codelab);
   }
 
   /*
@@ -58,35 +88,9 @@ class CodelabList extends PolymerElement {
   }
 
   /*
-   * Adds a codelab to the codelabs list and resets the new codelab form. This
-   * triggers codelabsChanged().
-   */
-  addCodelab(Event e, var detail, Node sender) {
-    e.preventDefault();
-    codelabs.add(detail['codelab']);
-    resetForm();
-  }
-
-  /*
    * Refreshes the filtered codelabs list every time the codelabs list changes.
    */
   codelabsChanged() {
     filter();
-  }
-
-  /*
-   * Replaces the existing new Codelab, causing the new codelab form to reset.
-   */
-  resetForm() {
-    newCodelab = new Codelab();
-    newCodelab.level = defaultLevel;
-  }
-
-  /*
-   * Removes a codelab from the codelabs list. This triggers codelabsChanged().
-   */
-  deleteCodelab(Event e, var detail, Node sender) {
-    var codelab = detail['codelab'];
-    codelabs.remove(codelab);
   }
 }

@@ -11,26 +11,26 @@ class CodelabElement extends PolymerElement {
   CodelabElement.created(): super.created() {}
 
   updateCodelab(Event e, var detail, Node sender) {
-     e.preventDefault();
-     editing = false;
-   }
+    e.preventDefault();
+    editing = false;
+  }
 
-   startEditing(Event e, var detail, Node sender) {
-     e.preventDefault();
-     _cachedCodelab = new Codelab();
-     copyCodelab(_cachedCodelab, codelab);
-     editing = true;
-   }
+  startEditing(Event e, var detail, Node sender) {
+    e.preventDefault();
+    _cachedCodelab = new Codelab();
+    copyCodelab(_cachedCodelab, codelab);
+    editing = true;
+  }
 
-   cancelEditing(Event e, var detail, Node sender) {
-     e.preventDefault();
-     copyCodelab(codelab, _cachedCodelab);
-     editing = false;
-   }
+  cancelEditing(Event e, var detail, Node sender) {
+    e.preventDefault();
+    copyCodelab(codelab, _cachedCodelab);
+    editing = false;
+  }
 
-   copyCodelab(source, destination) {
-     source.title = destination.title;
-     source.description = destination.description;
-     source.level = destination.level;
-   }
+  copyCodelab(source, destination) {
+    source.title = destination.title;
+    source.description = destination.description;
+    source.level = destination.level;
+  }
 }
