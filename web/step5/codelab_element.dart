@@ -36,4 +36,10 @@ class CodelabElement extends PolymerElement {
      source.description = destination.description;
      source.level = destination.level;
    }
+
+   deleteCodelab(Event e, var detail, Node sender) {
+     e.preventDefault();
+     dispatchEvent(new CustomEvent('deletecodelab',
+         detail: {'codelab': codelab}));
+   }
 }
